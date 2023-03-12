@@ -5,6 +5,8 @@ A Joystick Gremlin plugin to activate the LEDs of a VKB flight stick
 Warning: this code interfaces with your VKB device. I have found this
 code safe to use, but you assume all risks when applying your device.  
 
+
+
 Directions
  
  1. Save the bitstruct & pywinsub folders to the Joystick Gremlin
@@ -20,26 +22,29 @@ Directions
  5. Open Joystick Gremlin, go to the Plugins tab, and choose Add Plugin,
     and navigate to where vkb_led_jg_plugin.py is located.
  6. Select desired settings...
- 
+
+
+
 Credit Where Credit Is Due
  
- pywinsub written by Rene F. Aguirre located at pypi.org/project/pywinsub
+* pywinsub written by Rene F. Aguirre located at pypi.org/project/pywinsub
 
- bitstruct written by Erik Moqvist & Ilya Petukhov located at
+*  bitstruct written by Erik Moqvist & Ilya Petukhov located at
     pypi.org/project/bitstruct
  
- pyvkb written by ventorvar located at github.com/ventorvar/pyvkb.  The code
+* pyvkb written by ventorvar located at github.com/ventorvar/pyvkb.  The code
     for the LEDClass, get_LED_congifs(), set_LEDs() and LED_conf_checksum() are
 	slightly modified but essentially from this package.  Modifications include
 	simplifying the RGB colors to use the VKB 0-7 range, opening and closing 
 	the device, and working around an issue with reading in values from the VKB
 	device (described below).
 	
- vkb-msfs-led by tiberriusteng located at github.com/tiberiusteng/vkb-msfs-led.
+* vkb-msfs-led by tiberriusteng located at github.com/tiberiusteng/vkb-msfs-led.
     Mostly used as an example and for inspiration.
 	
 And, of course, Joystick Gremlin by whitemagic located at 
     whitemagic.github.io/JoystickGremlin/
+
 
 
 Details
@@ -69,6 +74,8 @@ LED is reset to the default color.  If they do not match, then another
 button has been pressed which changed the LED and the LED is left alone.
 The button state is turned "off".
 
+
+
 Limitations
 
 The LED settings stored in the VKB device via VKBDevCFG are overwritten during
@@ -96,6 +103,8 @@ back in.
 The plugin does not interact with the flight simulator/game in anyway.  If LEDs
 are set when the sim ends, you will have to push buttons to get back to a
 neutral state, or simply, unplug and re-plug the device back in.
+
+
 
 Future Features
 
