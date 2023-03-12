@@ -2,10 +2,10 @@
 
 A Joystick Gremlin plugin to activate the LEDs of a VKB flight stick
 
-**Warning**: this code interfaces with your VKB device. I have found this
+***Warning***: this code interfaces with your VKB device. I have found this
 code safe to use, but you assume all risks when applying your device.  
 
-##Directions
+## Directions
  
  1. Save the bitstruct & pywinsub folders to the Joystick Gremlin
     programs directory.  For me this is:
@@ -21,7 +21,7 @@ code safe to use, but you assume all risks when applying your device.
     and navigate to where vkb_led_jg_plugin.py is located.
  6. Select desired settings...
 
-##Credit Where Credit Is Due
+## Credit Where Credit Is Due
  
 * pywinsub written by Rene F. Aguirre located at pypi.org/project/pywinsub
 
@@ -41,7 +41,7 @@ code safe to use, but you assume all risks when applying your device.
 And, of course, Joystick Gremlin by whitemagic located at 
     whitemagic.github.io/JoystickGremlin/
 
-##Details
+## Details
 
 In the plugin user interface, you can associate a button with one LED.  After 
 choosing either the Base, Hat, or RGB LED, you can set the configuration for 
@@ -68,7 +68,7 @@ LED is reset to the default color.  If they do not match, then another
 button has been pressed which changed the LED and the LED is left alone.
 The button state is turned "off".
 
-##Limitations
+## Limitations
 
 The LED settings stored in the VKB device via VKBDevCFG are overwritten during
 the plugin's use, but those settings will be restored when the device is 
@@ -96,7 +96,7 @@ The plugin does not interact with the flight simulator/game in anyway.  If LEDs
 are set when the sim ends, you will have to push buttons to get back to a
 neutral state, or simply, unplug and re-plug the device back in.
 
-##Future Features
+## Future Features
 
  1. Track the history of button pushes across all buttons to have a more 
     educated restore procedure.
