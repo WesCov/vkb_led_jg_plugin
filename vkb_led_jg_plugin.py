@@ -4,6 +4,8 @@ Wesley Covalt
 
 Joystick Gremlin plugin to control the three LEDs of a VKB Gladiator flightstick.
 
+Please see the README file for directions, credits, and limitations.
+
 """
 
 import os
@@ -19,9 +21,10 @@ vendor_id=0x231d
 product_id=0x0200
 
 
-log_filename = 'vkb_led_jg_plugin.log'
-current_dir = os.path.abspath(os.path.dirname(__file__))
-logging.basicConfig(filename=os.path.join(current_dir, log_filename), level=logging.DEBUG)
+# uncomment to post to log
+#log_filename = 'vkb_led_jg_plugin.log'
+#current_dir = os.path.abspath(os.path.dirname(__file__))
+#logging.basicConfig(filename=os.path.join(current_dir, log_filename), level=logging.DEBUG)
 
 #
 #    Joystick Gremlin UI
@@ -98,17 +101,19 @@ rgbStrColor3 = StringVariable(
 controlState = controlStateClass()
 
 
-# get the vkb device if connected
+# get the vkb device, if connected
 controlState.vkbDevice = getUSBDevice(vendor_id, product_id)
 
 if controlState.vkbDevice is None:
     
-    gremlin.util.log(f"VKB Device not active. Vendor ID: {hex(vendor_id)} Product ID {hex(product_id)}")
+    #gremlin.util.log(f"VKB Device not active. Vendor ID: {hex(vendor_id)} Product ID {hex(product_id)}")
     pass
 
 else:
     
-    gremlin.util.log(f"VKB Device found. Vendor ID: {vendor_id} Product ID {product_id}")
+    #gremlin.util.log(f"VKB Device found. Vendor ID: {vendor_id} Product ID {product_id}")
+
+    # packup the UI inputs into the controlState variable
 
     controlState.LED_id = LEDNameToId(LEDName.value)
     controlState.buttonStateOn = False
@@ -160,13 +165,16 @@ else:
                                            LEDMode = 0,
                                            color1 = (0,0,0),
                                            color2 = (0,0,0))
-                
+   
+
+             
     decorator_button = buttonTrigger.create_decorator(mode.value)
 
     @decorator_button.button(buttonTrigger.input_id)
     def button_action(event, vjoy):
         global controlState
 
+        # the USB Lighting Usage report acts as interface between code and LED
         deviceLEDUsage = get_LED_configs(controlState.vkbDevice)        
         
         LEDIndex = getLEDIndex(controlState.LED_id, deviceLEDUsage)

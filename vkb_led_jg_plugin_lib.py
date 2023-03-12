@@ -1,3 +1,46 @@
+"""
+
+vkb_led_jg_plugin_lib.py
+
+LEDClass, get_LED_configs, set_LEDs, and _LED_conf_checksum are from the pyvkb package by
+ventorvar.  Modifications are limiting RGB values to 0 to 7, open and closing the VKB device,
+and adding a dummy LED the set process to get around a read error. 
+
+The following is from ventorvar:
+    
+Setting the LEDs consists of a possible 30 LED configs each of which is a 4 byte structure as follows:
+
+byte 0:  LED ID
+bytes 2-4: a 24 bit color config as follows::
+
+    000 001 010 011 100 101 110 111
+    clm lem  b2  g2  r2  b1  g1  r1
+
+color mode (clm):
+    0 - color1
+    1 - color2
+    2 - color1/2
+    3 - color2/1
+    4 - color1+2
+
+led mode (lem):
+    0 - off
+    1 - constant
+    2 - slow blink
+    3 - fast blink
+    4 - ultra fast
+
+Colors:
+    VKB uses a simple RGB color configuration for all LEDs. Non-rgb LEDs will not light if you set their primary
+    color to 0 in the color config. The LEDs have a very reduced color range due to VKB using 0-7 to determine the
+    brightness of R, G, and B.
+"""
+
+"""
+    The remaining functions are utilities to translate UI input or search the USB Lighting report
+"""
+
+
 import os
 import pywinusb.hid as hid
 
@@ -11,7 +54,6 @@ LED_CONFIG_COUNT = 4    # plus a dummy
 
 
 class LEDClass:
-
     def __init__(self,
                  LED_id = 0,
                  colorMode = 0,
@@ -173,6 +215,7 @@ def getUSBDevice(vendor_id, product_id):
     else:
         return theDevice[0] 
 
+# search the USB lighting report results for a specific LED
 def getLEDIndex(LED_id, LEDConfigs):
     i=0
     while i < len(LEDConfigs) and LEDConfigs[i].LED_id != LED_id:
