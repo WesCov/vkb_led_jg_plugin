@@ -23,7 +23,7 @@ code safe to use, but you assume all risks when applying your device.
 
 ## Credit Where Credit Is Due
  
-* pywinsub written by Rene F. Aguirre located at pypi.org/project/pywinsub
+* pywinsub written by Rene F. Aguirre located at pypi.org/project/pywinusb
 
 *  bitstruct written by Erik Moqvist & Ilya Petukhov located at
     pypi.org/project/bitstruct
